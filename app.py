@@ -1,5 +1,5 @@
 import pandas as pd
-from dotenv import load_dotenv, dotenv_values # type: ignore
+from dotenv import load_dotenv # type: ignore
 from deep_translator import GoogleTranslator as Translator # type: ignore
 from openai import OpenAI
 from tqdm import tqdm # type: ignore
@@ -56,7 +56,7 @@ def openai_translate(client,texts,args,column_type="text"):
             f"Return only the translation, no explanations."
         )
 
-    for text in tqdm(texts,desc="Translating..", leave=False,ncols=150):
+    for text in tqdm(texts,desc="Translating {column_type}..", leave=False,ncols=150):
         try:
             response=client.chat.completions.create(
                 model="gpt-4o-mini",
